@@ -1,4 +1,4 @@
-{{ config(materialized='incremental', unique_key='order_item_sk') }}
+{{ config(materialized='incremental', unique_key='order_item_sk', on_schema_change='sync_all_columns') }}
 
 with order_items as (
     select *
@@ -17,7 +17,7 @@ orders as (
 )
 
 select
-    {{ build_surrogate_key(['i.order_item_id', 'i.order_id']) }} as order_item_sk,
+    {{ build_surrogate_key(['o_itms.order_item_id', 'o_itms.order_id']) }} as order_item_sk,
     o_itms.order_item_id,
     o_itms.order_id,
 
@@ -42,10 +42,10 @@ select
 from order_items as o_itms
 inner join orders
     on o_itms.order_id = orders.order_id
+
 {% if is_incremental() %}
 where greatest(o_itms.order_item_updated_at, orders.order_updated_at) >= (
     select coalesce(max(record_updated_at), timestamp '1900-01-01 00:00:00')
     from {{ this }}
 )
 {% endif %}
-

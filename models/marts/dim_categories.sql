@@ -15,14 +15,14 @@ product_rollup as (
 )
 
 select
-    {{ build_surrogate_key(['c.category_id']) }} as category_sk,
+    {{ build_surrogate_key(['cat.category_id']) }} as category_sk,
     cat.category_id,
     cat.category_name,
     cat.department_name,
 
     coalesce(p_rollup.active_product_count, 0) as active_product_count,
     greatest(
-        c.category_updated_at,
+        cat.category_updated_at,
         coalesce(p_rollup.latest_product_updated_at, timestamp '1900-01-01 00:00:00')
     ) as record_updated_at
     

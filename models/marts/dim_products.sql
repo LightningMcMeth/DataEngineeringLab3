@@ -1,4 +1,4 @@
-{{ config(materialized='incremental', unique_key='product_id') }}
+{{ config(materialized='incremental', unique_key='product_id', on_schema_change='sync_all_columns') }}
 
 with products as (
     select *
@@ -11,7 +11,7 @@ categories as (
 )
 
 select
-    {{ build_surrogate_key(['p.product_id', 'p.category_id']) }} as product_sk,
+    {{ build_surrogate_key(['prod.product_id', 'prod.category_id']) }} as product_sk,
     prod.product_id,
     prod.category_id,
 
@@ -32,6 +32,7 @@ select
 from products as prod
 left join categories as cat
     on prod.category_id = cat.category_id
+
 {% if is_incremental() %}
 where prod.product_updated_at >= (
     select coalesce(max(record_updated_at), timestamp '1900-01-01 00:00:00')

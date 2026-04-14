@@ -18,9 +18,9 @@ review_rollup as (
         avg(rev.rating) as average_rating
     from {{ ref('stg_reviews') }} as rev
     inner join {{ ref('fct_order_items') }} as oi
-        on rev.order_item_id = o_itms.order_item_id
+        on rev.order_item_id = oi.order_item_id
     inner join products as prod
-        on o_itms.product_id = prod.product_id
+        on oi.product_id = prod.product_id
     group by 1
 ),
 
@@ -58,5 +58,4 @@ select
     ) as category_revenue_rank
 from category_month_rollup as cat_rollup
 left join review_rollup as r
-    on c.category_id = r.category_id
-
+    on cat_rollup.category_id = r.category_id
