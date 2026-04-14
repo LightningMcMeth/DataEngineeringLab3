@@ -1,0 +1,13 @@
+product_id,category_id,product_name,brand_name,list_price,standard_cost,is_active,created_at,updated_at
+1,1,Wireless Mouse,LogiTech,25.00,10.00,true,2024-09-01 08:00:00,2025-03-15 10:00:00
+2,1,Mechanical Keyboard,KeyMaster,75.00,40.00,true,2024-09-03 08:00:00,2025-03-15 10:00:00
+3,1,USB-C Hub,Portify,45.00,20.00,true,2024-09-05 08:00:00,2025-03-15 10:00:00
+4,2,Blender,HomePro,89.00,50.00,true,2024-09-10 08:00:00,2025-02-14 10:00:00
+5,2,Coffee Maker,BrewLab,120.00,70.00,true,2024-09-12 08:00:00,2025-03-15 10:00:00
+6,2,Desk Lamp,GlowHome,35.00,15.00,true,2024-09-14 08:00:00,2025-03-20 10:00:00
+7,3,Running Shoes,MoveFast,95.00,55.00,true,2024-09-18 08:00:00,2025-03-09 10:00:00
+8,3,Hoodie,UrbanThread,60.00,25.00,true,2024-09-20 08:00:00,2025-03-20 10:00:00
+9,3,Backpack,TrailGo,70.00,30.00,true,2024-09-22 08:00:00,2025-02-21 10:00:00
+10,4,Skincare Set,PureGlow,55.00,22.00,true,2024-09-25 08:00:00,2025-03-20 10:00:00
+11,4,Hair Dryer,StyleAir,65.00,35.00,true,2024-09-27 08:00:00,2025-03-19 10:00:00
+12,4,Perfume,VelvetScent,80.00,42.00,true,2024-09-29 08:00:00,2025-03-02 10:00:00

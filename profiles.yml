@@ -1,0 +1,8 @@
+lab3_ecommerce:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: warehouse/ecommerce.duckdb
+      schema: main
+      threads: 4

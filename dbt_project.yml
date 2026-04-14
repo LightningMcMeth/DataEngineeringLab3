@@ -1,0 +1,35 @@
+name: "lab3_ecommerce"
+
+config-version: 2
+version: "1.0.0"
+
+profile: "lab3_ecommerce"
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+  - "logs"
+  - "warehouse"
+
+models:
+  lab3_ecommerce:
+    +persist_docs:
+      relation: true
+      columns: true
+    raw:
+      +materialized: view
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  lab3_ecommerce:
+    +quote_columns: false

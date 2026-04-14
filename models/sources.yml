@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: ecommerce_seed
+    description: seed sources for lab 3 gaming
+    schema: main
+    tables:
+      - name: customers
+        description: general customer data.
+      - name: categories
+        description: product categories.
+      - name: products
+        description: available products.
+      - name: orders
+        description: customer order data.
+      - name: order_items
+        description: description of items in each order.
+      - name: payments
+        description: order payment transactions.
+      - name: shipments
+        description: ordershipment information.
+      - name: reviews
+        description: product reviews.
+      - name: returns
+        description: rder return information.

@@ -1,0 +1,5 @@
+return_id,order_item_id,return_request_date,return_reason,return_status,refund_amount,updated_at
+8001,15,2025-02-20 11:00:00,damaged,approved,70.00,2025-02-21 08:30:00
+8002,12,2025-02-14 17:00:00,quality_issue,pending,89.00,2025-02-15 09:00:00
+8003,18,2025-03-02 10:00:00,not_as_expected,approved,80.00,2025-03-03 09:15:00
+8004,26,2025-03-18 12:00:00,not_as_expected,rejected,65.00,2025-03-19 10:00:00

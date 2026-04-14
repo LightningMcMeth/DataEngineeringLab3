@@ -1,0 +1,117 @@
+version: 2
+
+seeds:
+  - name: customers
+    description: general customer data.
+    config:
+      column_types:
+        customer_id: integer
+        first_name: varchar
+        last_name: varchar
+        email: varchar
+        phone: varchar
+        city: varchar
+        region: varchar
+        signup_date: date
+        customer_tier: varchar
+        is_active: boolean
+        updated_at: timestamp
+
+  - name: categories
+    description: product categories.
+    config:
+      column_types:
+        category_id: integer
+        category_name: varchar
+        department_name: varchar
+        updated_at: timestamp
+
+  - name: products
+    description: available products.
+    config:
+      column_types:
+        product_id: integer
+        category_id: integer
+        product_name: varchar
+        brand_name: varchar
+        list_price: decimal(10,2)
+        standard_cost: decimal(10,2)
+        is_active: boolean
+        created_at: timestamp
+        updated_at: timestamp
+
+  - name: orders
+    description: customer order data.
+    config:
+      column_types:
+        order_id: integer
+        customer_id: integer
+        order_date: timestamp
+        order_status: varchar
+        shipping_method: varchar
+        shipping_fee: decimal(10,2)
+        discount_amount: decimal(10,2)
+        updated_at: timestamp
+
+  - name: order_items
+    description: description of items in each order
+    config:
+      column_types:
+        order_item_id: integer
+        order_id: integer
+        product_id: integer
+        quantity: integer
+        unit_price: decimal(10,2)
+        unit_cost: decimal(10,2)
+        discount_amount: decimal(10,2)
+        updated_at: timestamp
+
+  - name: payments
+    description: order payment transactions
+    config:
+      column_types:
+        payment_id: integer
+        order_id: integer
+        payment_date: timestamp
+        payment_method: varchar
+        payment_status: varchar
+        amount: decimal(10,2)
+        updated_at: timestamp
+
+  - name: shipments
+    description: ordershipment information.
+    config:
+      column_types:
+        shipment_id: integer
+        order_id: integer
+        carrier: varchar
+        shipped_at: timestamp
+        estimated_delivery_at: timestamp
+        delivered_at: timestamp
+        shipment_status: varchar
+        shipping_region: varchar
+        updated_at: timestamp
+
+  - name: reviews
+    description: product reviews.
+    config:
+      column_types:
+        review_id: integer
+        order_item_id: integer
+        customer_id: integer
+        review_date: timestamp
+        rating: integer
+        review_text: varchar
+        updated_at: timestamp
+
+  - name: returns
+    description: order return information.
+    config:
+      column_types:
+        return_id: integer
+        order_item_id: integer
+        return_request_date: timestamp
+        return_reason: varchar
+        return_status: varchar
+        refund_amount: decimal(10,2)
+        updated_at: timestamp

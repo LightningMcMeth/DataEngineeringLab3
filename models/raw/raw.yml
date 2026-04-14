@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: raw_customers
+    description: Typed customer source records.
+  - name: raw_categories
+    description: Typed category source records.
+  - name: raw_products
+    description: Typed product source records.
+  - name: raw_orders
+    description: Typed order header source records.
+  - name: raw_order_items
+    description: Typed order item source records.
+  - name: raw_payments
+    description: Typed payment source records.
+  - name: raw_shipments
+    description: Typed shipment source records.
+  - name: raw_reviews
+    description: Typed review source records.
+  - name: raw_returns
+    description: Typed return source records.

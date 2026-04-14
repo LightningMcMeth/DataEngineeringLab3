@@ -1,0 +1,13 @@
+customer_id,first_name,last_name,email,phone,city,region,signup_date,customer_tier,is_active,updated_at
+1,Alice,Brown,alice.brown@example.com,+380500000001,Kyiv,North,2024-10-15,gold,true,2025-03-20 09:15:00
+2,Ben,Carter,ben.carter@example.com,+380500000002,Lviv,West,2024-11-02,silver,true,2025-03-21 10:45:00
+3,Clara,Davis,clara.davis@example.com,+380500000003,Dnipro,East,2024-12-01,silver,true,2025-03-03 08:10:00
+4,David,Evans,david.evans@example.com,+380500000004,Odesa,South,2024-12-12,bronze,true,2025-01-22 11:30:00
+5,Emma,Foster,emma.foster@example.com,+380500000005,Kharkiv,East,2025-01-05,gold,true,2025-03-15 12:20:00
+6,Farah,Green,farah.green@example.com,+380500000006,Vinnytsia,Central,2025-01-10,silver,true,2025-03-18 14:40:00
+7,George,Hall,george.hall@example.com,+380500000007,Poltava,Central,2025-01-20,bronze,true,2025-02-14 13:05:00
+8,Hannah,Ivers,hannah.ivers@example.com,+380500000008,Zaporizhzhia,East,2025-01-25,bronze,true,2025-02-20 15:55:00
+9,Ivan,Johnson,ivan.johnson@example.com,+380500000009,Cherkasy,Central,2025-02-01,silver,true,2025-02-24 16:10:00
+10,Julia,King,julia.king@example.com,+380500000010,Mykolaiv,South,2025-02-10,bronze,true,2025-03-01 09:00:00
+11,Liam,Moore,liam.moore@example.com,+380500000011,Kyiv,North,2025-02-18,gold,true,2025-03-07 11:15:00
+12,Mia,Novak,mia.novak@example.com,+380500000012,Lviv,West,2025-02-25,silver,true,2025-03-10 17:05:00

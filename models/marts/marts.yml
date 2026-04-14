@@ -1,0 +1,138 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: customer dimension at one row per customer.
+    columns:
+      - name: customer_id
+        description: Business key for the customer dimension.
+        tests:
+          - not_null
+          - unique
+      - name: customer_tier
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['bronze', 'silver', 'gold']
+
+  - name: dim_products
+    description: product dimension at one row per product.
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+      - name: category_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_categories')
+                field: category_id
+
+  - name: dim_categories
+    description: category dimension at one row per category.
+    columns:
+      - name: category_id
+        tests:
+          - not_null
+          - unique
+
+  - name: fct_orders
+    description: order fact at one row per order.
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+      - name: order_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['cancelled', 'delivered', 'processing', 'shipped']
+      - name: payment_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['failed', 'paid', 'pending', 'refunded', 'unpaid']
+
+  - name: fct_order_items
+    description: order item fact at one row per order item.
+    columns:
+      - name: order_item_sk
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('fct_orders')
+                field: order_id
+      - name: product_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_id
+
+  - name: fct_payments
+    description: payment fact at one row per payment transaction.
+    columns:
+      - name: payment_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('fct_orders')
+                field: order_id
+      - name: payment_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['failed', 'paid', 'pending', 'refunded']
+
+  - name: fct_shipments
+    description: shipment fact at one row per shipment.
+    columns:
+      - name: shipment_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('fct_orders')
+                field: order_id
+      - name: delivery_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['delivered', 'in_transit']
+
+  - name: int_customer_order_sequence
+    description: intermediate model that sequences each customer's orders using window functions.
+
+  - name: mart_customer_value
+    description: value mart for lifetime value and repeat purchase analysis.
+
+  - name: mart_category_performance
+    description: per category monthly revenue and profit performance with ranking.
+
+  - name: mart_monthly_revenue
+    description: monthly revenue mart with running totals and month over month comparisons.
+
+  - name: mart_delivery_performance
+    description: carrier and region delivery performance metrics.
+
+  - name: mart_product_quality
+    description: mart combining sales, ratings, and returns.

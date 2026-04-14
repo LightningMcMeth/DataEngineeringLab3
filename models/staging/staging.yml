@@ -1,0 +1,123 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: standardized customer records.
+    columns:
+      - name: customer_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_tier
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['bronze', 'silver', 'gold']
+
+  - name: stg_categories
+    description: standardized product categories.
+    columns:
+      - name: category_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_products
+    description: standardized product catalog records.
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - unique
+      - name: category_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_categories')
+                field: category_id
+
+  - name: stg_orders
+    description: standardized order records
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+      - name: order_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['cancelled', 'delivered', 'processing', 'shipped']
+
+  - name: stg_order_items
+    description: standardized order items records with metrics.
+    columns:
+      - name: order_item_id
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_orders')
+                field: order_id
+      - name: product_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+  - name: stg_payments
+    description: standardized payment records
+    columns:
+      - name: payment_id
+        tests:
+          - not_null
+          - unique
+      - name: payment_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['failed', 'paid', 'pending', 'refunded']
+
+  - name: stg_shipments
+    description: standardized shipment records.
+    columns:
+      - name: shipment_id
+        tests:
+          - not_null
+          - unique
+      - name: shipment_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['delivered', 'in_transit']
+
+  - name: stg_reviews
+    description: standardized review records.
+    columns:
+      - name: review_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_returns
+    description: standardized return records.
+    columns:
+      - name: return_id
+        tests:
+          - not_null
+          - unique
+      - name: return_status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['approved', 'pending', 'rejected']

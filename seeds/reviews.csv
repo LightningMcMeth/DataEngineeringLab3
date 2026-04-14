@@ -1,0 +1,13 @@
+review_id,order_item_id,customer_id,review_date,rating,review_text,updated_at
+9001,1,1,2025-01-12 12:00:00,5,Easy to use and reliable,2025-01-12 12:00:00
+9002,3,2,2025-01-15 13:00:00,4,Keyboard feels solid,2025-01-15 13:00:00
+9003,5,3,2025-01-19 15:30:00,5,Great cushioning for daily runs,2025-01-19 15:30:00
+9004,8,1,2025-01-28 11:20:00,4,Skincare set worked well,2025-01-28 11:20:00
+9005,12,6,2025-02-12 16:15:00,3,Blender is powerful but loud,2025-02-12 16:15:00
+9006,15,2,2025-02-18 10:40:00,2,Backpack zipper feels weak,2025-02-18 10:40:00
+9007,18,8,2025-03-01 09:25:00,2,Perfume scent faded quickly,2025-03-01 09:25:00
+9008,19,8,2025-03-01 09:28:00,5,Skincare set was excellent,2025-03-01 09:28:00
+9009,21,9,2025-03-05 14:50:00,4,Lamp fits perfectly on my desk,2025-03-05 14:50:00
+9010,24,3,2025-03-09 17:35:00,5,Shoes are very comfortable,2025-03-09 17:35:00
+9011,26,11,2025-03-15 12:15:00,3,Dryer works but gets quite hot,2025-03-15 12:15:00
+9012,29,12,2025-03-20 18:20:00,4,Hoodie is comfortable and warm,2025-03-20 18:20:00
