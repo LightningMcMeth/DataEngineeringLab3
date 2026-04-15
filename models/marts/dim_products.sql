@@ -35,7 +35,7 @@ left join categories as cat
 
 {% if is_incremental() %}
 where prod.product_updated_at >= (
-    select coalesce(max(record_updated_at), timestamp '1900-01-01 00:00:00')
+    select coalesce(max(record_updated_at), timestamp '1932-01-01 00:00:00')
     from {{ this }}
 )
 {% endif %}

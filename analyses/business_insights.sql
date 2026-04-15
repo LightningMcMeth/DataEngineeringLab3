@@ -15,8 +15,3 @@ order by order_month;
 select *
 from {{ ref('mart_delivery_performance') }}
 order by late_delivery_rate desc, shipment_count desc;
-
-select *
-from {{ ref('mart_product_quality') }}
-where product_quality_flag = 'watchlist'
-order by return_rate desc, average_rating asc;

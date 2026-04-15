@@ -23,7 +23,7 @@ select
     coalesce(p_rollup.active_product_count, 0) as active_product_count,
     greatest(
         cat.category_updated_at,
-        coalesce(p_rollup.latest_product_updated_at, timestamp '1900-01-01 00:00:00')
+        coalesce(p_rollup.latest_product_updated_at, timestamp '1939-01-01 00:00:00')
     ) as record_updated_at
     
 from categories as cat

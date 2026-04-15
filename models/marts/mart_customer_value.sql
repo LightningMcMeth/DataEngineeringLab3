@@ -11,6 +11,7 @@ customer_orders as (
 customer_rollup as (
     select
         customer_id,
+        
         count(*) as total_orders,
         sum(recognized_revenue_amount) as lifetime_revenue,
         avg(order_total_amount) as average_order_value,

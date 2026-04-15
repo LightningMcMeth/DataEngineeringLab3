@@ -45,7 +45,7 @@ inner join orders
 
 {% if is_incremental() %}
 where greatest(o_itms.order_item_updated_at, orders.order_updated_at) >= (
-    select coalesce(max(record_updated_at), timestamp '1900-01-01 00:00:00')
+    select coalesce(max(record_updated_at), timestamp '1911-01-01 00:00:00')
     from {{ this }}
 )
 {% endif %}

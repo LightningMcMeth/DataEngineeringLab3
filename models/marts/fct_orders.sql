@@ -54,7 +54,7 @@ shipments as (
     group by 1
 ),
 
-final as (
+final_table as (
     select
         orders.order_id,
         orders.customer_id,
@@ -94,9 +94,9 @@ final as (
 
         greatest(
             orders.order_updated_at,
-            coalesce(o_itms.latest_order_item_updated_at, timestamp '1900-01-01 00:00:00'),
-            coalesce(pay.latest_payment_updated_at, timestamp '1900-01-01 00:00:00'),
-            coalesce(ship.latest_shipment_updated_at, timestamp '1900-01-01 00:00:00')
+            coalesce(o_itms.latest_order_item_updated_at, timestamp '1901-01-01 00:00:00'),
+            coalesce(pay.latest_payment_updated_at, timestamp '1902-01-01 00:00:00'),
+            coalesce(ship.latest_shipment_updated_at, timestamp '1903-01-01 00:00:00')
         ) as record_updated_at
     from orders
     left join order_items as o_itms
@@ -108,11 +108,11 @@ final as (
 )
 
 select *
-from final
+from final_table
 
 {% if is_incremental() %}
 where record_updated_at >= (
-    select coalesce(max(record_updated_at), timestamp '1900-01-01 00:00:00') - interval '7 days'
+    select coalesce(max(record_updated_at), timestamp '1901-01-01 00:00:00') - interval '7 days'
     from {{ this }}
 )
 {% endif %}

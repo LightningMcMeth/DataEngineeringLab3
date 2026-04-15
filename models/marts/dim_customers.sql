@@ -16,7 +16,7 @@ order_rollup as (
     group by 1
 ),
 
-final as (
+final_table as (
     select
         c.customer_sk,
         c.customer_id,
@@ -55,7 +55,7 @@ final as (
 )
 
 select *
-from final
+from final_table
 {% if is_incremental() %}
 where record_updated_at >= (
     select coalesce(max(record_updated_at), timestamp '1900-01-01 00:00:00')

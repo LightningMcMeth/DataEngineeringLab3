@@ -133,6 +133,3 @@ models:
 
   - name: mart_delivery_performance
     description: carrier and region delivery performance metrics.
-
-  - name: mart_product_quality
-    description: mart combining sales, ratings, and returns.
